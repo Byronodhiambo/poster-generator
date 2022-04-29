@@ -12,9 +12,31 @@ export default function App(props) {
     });
   }
 
+  const [messages, setMessages] = React.useState(["a", "b"]);
+  function changeMsg() {
+    setMessages(["1"]);
+  }
+
   const box = boxes.map((box) => (
     <Box on={box.on} key={box.id} clickHandler={() => toogle(box.id)} />
   ));
 
-  return <>{box}</>;
+  return (
+    <>
+      {box}
+      <div>
+        <h3>
+          {messages.length < 1 ? (
+            <p> You are all caught up!</p>
+          ) : (
+            <p>
+              you have {messages.length} unread{" "}
+              {messages.length > 1 ? "messages" : "message"}
+            </p>
+          )}
+        </h3>
+        <button onClick={changeMsg}>set messages</button>
+      </div>
+    </>
+  );
 }
