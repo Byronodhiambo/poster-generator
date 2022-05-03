@@ -16,6 +16,11 @@ export default function Main() {
     // Data[Math.floor(Math.random() * Data.length)].url
   }
 
+  const [form, setForm] = React.useState({ title: "", content: "" });
+  function changeForm(event) {
+    setForm(event.target.value);
+  }
+
   // const [array, setArray] = React.useState([
   //   "michael 1",
   //   "michael 2",
@@ -44,7 +49,7 @@ export default function Main() {
   return (
     <div className="main">
       <div className="form">
-        <input className="inputs" type="text" placeholder="title "></input>
+        <input className="inputs" type="text" placeholder="title " on></input>
         <input className="inputs" type="text" placeholder="content"></input>
         <button onClick={getImage} className="button">
           Generate Poster
