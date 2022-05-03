@@ -17,8 +17,19 @@ export default function Main() {
   }
 
   const [form, setForm] = React.useState({ title: "", content: "" });
+  console.log(form);
   function changeForm(event) {
-    setForm(event.target.value);
+    setForm((prevForm) => {
+      return {
+        ...prevForm,
+        [event.target.name]: event.target.value,
+      };
+    });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log(form);
   }
 
   // const [array, setArray] = React.useState([
@@ -33,7 +44,18 @@ export default function Main() {
 
   // function append() {
   //   const newAItem = `michael ${array.length + 1}`;
-  //   array.push(newAItem);
+  //   array.push(newAItem);{/* <button onClick={append}>{array}</button> */}
+
+  {
+    /* <br></br>
+      <div>
+        <button onClick={subtract}>-</button>
+        <div>
+          <h1>{count}</h1>
+        </div>
+        <button onClick={add}>+</button>
+      </div> */
+  }
   //   console.log(array);
   // }
   // const [count, setCount] = React.useState(0);
@@ -48,15 +70,34 @@ export default function Main() {
 
   return (
     <div className="main">
-      <div className="form">
-        <input className="inputs" type="text" placeholder="title " on></input>
-        <input className="inputs" type="text" placeholder="content"></input>
+      <form className="form" onSubmit={handleSubmit}>
+        <input
+          className="inputs"
+          type="text"
+          placeholder="title "
+          name="title"
+          value={form.title}
+          onChange={changeForm}
+        ></input>
+        <input
+          className="inputs"
+          type="text"
+          placeholder="content"
+          name="content"
+          value={form.content}
+          onChange={changeForm}
+        ></input>
         <button onClick={getImage} className="button">
           Generate Poster
         </button>
+      </form>
+
+      <div className="poster">
+        <img className="poster-img" src={poster.image} />
+        <h1 className="top">{form.title}</h1>
+        <h1 className="bottom">{form.content}</h1>
       </div>
 
-      <img className="poster" src={poster.image} />
       {/* <button onClick={append}>{array}</button> */}
 
       {/* <br></br>

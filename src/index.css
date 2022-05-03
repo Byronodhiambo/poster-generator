@@ -57,8 +57,10 @@ code {
   border: 0.5px solid #0f212d;
   text-indent: 20px;
 }
-.poster {
-  width: 70%;
+.poster-img {
+  width: 50%;
+  filter: blur(2px);
+  -webkit-filter: blur(3px);
 }
 
 .box {
@@ -67,4 +69,22 @@ code {
   border: 1px solid black;
   display: inline-block;
   margin: 5px;
+}
+
+.poster {
+  position: relative;
+  text-align: center;
+  color: navy;
+}
+.top {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.bottom {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
