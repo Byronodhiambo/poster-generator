@@ -14,12 +14,15 @@ export default function App(props) {
 
   const [messages, setMessages] = React.useState(["a", "b"]);
   function changeMsg() {
-    setMessages(["1"]);
+    setMessages(["3", "uy", "rtre"]);
   }
 
   const box = boxes.map((box) => (
     <Box on={box.on} key={box.id} clickHandler={() => toogle(box.id)} />
   ));
+
+  const [count, setcount] = React.useState(1);
+  React.useEffect(() => console.log("hello"), []);
 
   return (
     <>
@@ -37,6 +40,15 @@ export default function App(props) {
         </h3>
         <button onClick={changeMsg}>set messages</button>
       </div>
+
+      <h3>hello person {count}</h3>
+      <button
+        onClick={() => {
+          setcount((prevCount) => (prevCount += 1));
+        }}
+      >
+        Add
+      </button>
     </>
   );
 }
